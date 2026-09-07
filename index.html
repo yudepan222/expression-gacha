@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="7つの偶然から、見てみたい一枚を見つける表現イメージガチャ。">
+  <title>表現イメージガチャ</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="prompt.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><div class="eyebrow">小さな表現研究室 <span>IDEA NOTE / 01</span></div>
+      <h1>表現イメージ<span>ガチャ</span><small>v0.1</small></h1>
+      <p>偶然をまぜて、まだ見たことのない一枚へ。</p>
+    </header>
+    <div class="workspace">
+      <section class="ingredients" aria-labelledby="ingredients-title">
+        <div class="section-heading"><div><span class="step">01 / COMBINATION</span><h2 id="ingredients-title">今日の組み合わせ</h2></div><span id="lock-count" class="counter">0 / 7 固定中</span></div>
+        <div class="draw-bar"><button id="draw-all" class="primary" type="button">↻ 全部ガチャる</button><p>気になる要素は「固定」。<br>残りを引き直して、もうひと混ぜ。</p></div>
+        <div id="categories" class="categories"></div>
+        <p class="footnote">組み合わせに正解はありません。異質な表現も、そのまま楽しんで。</p>
+      </section>
+      <section class="prompt-panel" aria-labelledby="prompt-title">
+        <div class="section-heading"><div><span class="step">02 / YOUR PROMPT</span><h2 id="prompt-title">見てみたい一枚</h2></div><span class="tag">日本語</span></div>
+        <p class="prompt-intro">7つの要素を、一枚のイラストへ。</p>
+        <label class="sr-only" for="prompt">画像生成AI用の日本語プロンプト</label>
+        <textarea id="prompt" readonly spellcheck="false"></textarea>
+        <button id="copy" class="copy-button" type="button">プロンプトをコピー <span aria-hidden="true">↗</span></button>
+        <p class="copy-hint">コピーして、画像生成AIに貼り付けてください。</p>
+      </section>
+    </div>
+    <footer><span>表現の実験は、ひとつの偶然から。</span><span>EXPRESSION IMAGE GACHA</span></footer>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <noscript>このアプリを使うには、ブラウザのJavaScriptを有効にしてください。</noscript>
+  </main>
+</body>
+</html>
