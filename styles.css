@@ -15,7 +15,7 @@ h2 { font-size:19px; margin:6px 0 0; font-weight:700; }
 .tag { border:1px solid var(--line); padding:5px 10px; border-radius:4px; }
 .draw-bar { display:flex; align-items:center; gap:18px; margin:22px 0 16px; }
 button { font:inherit; cursor:pointer; touch-action:manipulation; transition:background .15s; }
-button:focus-visible,textarea:focus-visible { outline:3px solid var(--orange); outline-offset:3px; }
+button:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible { outline:3px solid var(--orange); outline-offset:3px; }
 button:disabled { opacity:.42; cursor:default; }
 .primary { background:var(--green); border:1px solid var(--green); color:white; border-radius:7px; padding:15px 26px; font-size:17px; font-weight:700; white-space:nowrap; box-shadow:0 3px 0 #384a32; }
 .primary:hover:not(:disabled) { background:#40563a; }
@@ -46,6 +46,26 @@ footer { display:flex; justify-content:space-between; margin-top:32px; padding-t
 .status { position:fixed; bottom:22px; left:50%; transform:translateX(-50%); padding:12px 20px; background:var(--ink); color:#fffdf7; border-radius:8px; font-size:13px; max-width:90vw; width:max-content; opacity:0; pointer-events:none; }
 .status.visible { opacity:1; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.motif-controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; margin-bottom:12px; font-size:12px; }
+.motif-controls select { max-width:100%; min-height:44px; padding:8px 12px; border:1px solid var(--line); border-radius:5px; background:#fffcf5; color:var(--ink); font:inherit; }
+#motif-notice { flex-basis:100%; margin:0; color:#8a4428; line-height:1.8; }
+.favorites-panel { margin-top:16px; padding:14px; border:1px solid var(--line); border-radius:7px; background:#fffcf5; }
+.favorites-panel summary { cursor:pointer; font-size:13px; line-height:1.8; }
+#favorites-count { display:inline-block; margin-left:6px; color:var(--green); font-size:11px; }
+.settings-hint { color:var(--muted); font-size:11px; line-height:1.8; }
+.favorites-list { max-height:380px; overflow-y:auto; padding:4px; }
+.favorites-list fieldset { min-width:0; margin:0 0 12px; padding:0; border:0; }
+.favorites-list legend { padding:0 0 7px; color:var(--muted); font-size:11px; }
+.favorite-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(135px,1fr)); gap:6px; }
+.favorite-button { min-height:44px; padding:8px 10px; border:1px solid var(--line); border-radius:5px; background:transparent; color:var(--muted); text-align:left; font-size:12px; overflow-wrap:anywhere; }
+.favorite-button.is-favorite { background:#eaf0e3; color:#3d5733; border-color:#a8b79d; }
+.favorite-button:hover:not(:disabled) { background:#e4e6d7; }
+.current-favorite { margin-top:6px; max-width:100%; }
+.json-settings { margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; }
+#favorites-json { min-height:140px; padding:10px; border:1px solid var(--line); border-radius:5px; background:#fffdf7; font-size:12px; line-height:1.7; }
+.settings-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.settings-actions button { min-height:44px; max-width:100%; padding:8px 12px; border:1px solid var(--line); border-radius:5px; background:#eee8d9; color:var(--ink); font-size:12px; }
+.settings-notice { color:#8a4428; font-size:11px; line-height:1.8; overflow-wrap:anywhere; }
 @media(max-width:900px) { main { padding:26px 24px; } .workspace { gap:22px; grid-template-columns:1.1fr 1fr; } h3 span { display:none; } .draw-bar { gap:12px; } .primary { padding:14px 18px; } .prompt-panel { padding:18px; } }
 @media(max-width:720px) { .workspace { grid-template-columns:1fr; gap:30px; } main { padding:20px 16px; } h1 { font-size:27px; } .eyebrow { font-size:9px; } header { margin-bottom:25px; } .category { gap:10px; } textarea { min-height:460px; } footer { gap:15px; flex-wrap:wrap; } .value { font-size:15px; } }
 @media(prefers-reduced-motion:reduce) { button { transition:none; } }

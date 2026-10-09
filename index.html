@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="7つの偶然から、見てみたい一枚を見つける表現イメージガチャ。">
-  <title>表現イメージガチャ</title>
+  <meta name="description" content="モチーフ・表現技法・画材・配色などを組み合わせて、画像生成AI向けのプロンプトを作るランダムガチャ。">
+  <title>表現×画材×画風ガチャ</title>
   <link rel="stylesheet" href="styles.css">
   <script src="data.js" defer></script>
   <script src="prompt.js" defer></script>
@@ -13,14 +13,41 @@
 <body>
   <main>
     <header><div class="eyebrow">小さな表現研究室 <span>IDEA NOTE / 01</span></div>
-      <h1>表現イメージ<span>ガチャ</span><small>v0.1</small></h1>
-      <p>偶然をまぜて、まだ見たことのない一枚へ。</p>
+      <h1>表現×画材×画風<span>ガチャ</span><small>v1.1</small></h1>
+      <p>モチーフ・表現技法・画材・配色などを組み合わせて、画像生成AI向けのプロンプトを作るランダムガチャ。</p>
     </header>
     <div class="workspace">
       <section class="ingredients" aria-labelledby="ingredients-title">
         <div class="section-heading"><div><span class="step">01 / COMBINATION</span><h2 id="ingredients-title">今日の組み合わせ</h2></div><span id="lock-count" class="counter">0 / 7 固定中</span></div>
         <div class="draw-bar"><button id="draw-all" class="primary" type="button">↻ 全部ガチャる</button><p>気になる要素は「固定」。<br>残りを引き直して、もうひと混ぜ。</p></div>
+        <div class="motif-controls">
+          <label for="draw-mode">主役モチーフの抽選</label>
+          <select id="draw-mode">
+            <option value="all">全部抽選</option>
+            <option value="favorites">お気に入り抽選</option>
+            <option value="nonFavorites">非お気に入り抽選</option>
+          </select>
+          <p id="motif-notice" role="status" aria-live="polite" hidden></p>
+        </div>
         <div id="categories" class="categories"></div>
+        <details class="favorites-panel">
+          <summary>モチーフのお気に入り設定 <span id="favorites-count">0件登録</span></summary>
+          <p class="settings-hint">星を押すと登録・解除できます。抽選モードや登録の変更では、現在のモチーフは変わりません。</p>
+          <div id="favorites-list" class="favorites-list"></div>
+          <p id="storage-notice" class="settings-notice" role="status" hidden></p>
+          <div class="json-settings">
+            <label for="favorites-json">お気に入り設定のJSON</label>
+            <p id="import-hint" class="settings-hint">インポートすると、現在のお気に入り設定を置き換えます。JSONに抽選モードが含まれる場合は、そのモードも置き換えます。</p>
+            <textarea id="favorites-json" spellcheck="false" aria-describedby="import-hint" placeholder='{"version":1,"favorites":["猫"],"drawMode":"favorites"}'></textarea>
+            <div class="settings-actions">
+              <button id="export-favorites" type="button">JSONを出力</button>
+              <button id="copy-favorites" type="button">JSONをコピー</button>
+              <button id="import-favorites" type="button">設定を置き換えてインポート</button>
+            </div>
+            <p id="settings-result" class="settings-notice" role="status" aria-live="polite"></p>
+            <p class="settings-hint">設定はこのブラウザに保存されます。端末・ブラウザ間では自動同期されません。別の端末では、出力したJSONを貼り付けてインポートしてください。</p>
+          </div>
+        </details>
         <p class="footnote">組み合わせに正解はありません。異質な表現も、そのまま楽しんで。</p>
       </section>
       <section class="prompt-panel" aria-labelledby="prompt-title">
@@ -32,7 +59,7 @@
         <p class="copy-hint">コピーして、画像生成AIに貼り付けてください。</p>
       </section>
     </div>
-    <footer><span>表現の実験は、ひとつの偶然から。</span><span>EXPRESSION IMAGE GACHA</span></footer>
+    <footer><span>表現の実験は、ひとつの偶然から。</span><span>表現ガチャ / EXPRESSION × MATERIAL × STYLE GACHA</span></footer>
     <div id="status" class="status" role="status" aria-live="polite"></div>
     <noscript>このアプリを使うには、ブラウザのJavaScriptを有効にしてください。</noscript>
   </main>
